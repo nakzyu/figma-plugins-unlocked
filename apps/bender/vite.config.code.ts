@@ -1,24 +1,24 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
-import { viteSingleFile } from "vite-plugin-singlefile";
-export default defineConfig({
-  // Root directory (equivalent to Webpack's `context`)
-  root: resolve(__dirname, "src"),
 
+export default defineConfig({
   build: {
     // Output directory
     outDir: resolve(__dirname, "dist"),
     rollupOptions: {
       input: {
-        ui: resolve(__dirname, "src/app/index.html"), // Entry point for UI
+        code: resolve(__dirname, "src/code.ts"), // Entry point for backend logic
+      },
+      output: {
+        inlineDynamicImports: true,
+        entryFileNames: "[name].js", // Output filenames for entry points
       },
     },
   },
 
   plugins: [
     react(), // React and TypeScript plugin
-    viteSingleFile(),
   ],
 
   resolve: {

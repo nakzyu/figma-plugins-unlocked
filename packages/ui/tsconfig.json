@@ -1,20 +1,5 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "module": "commonjs",
-    "target": "es5",
-    "jsx": "react",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "outDir": "./dist", // 출력 디렉터리 설정
-    "rootDir": "./src", // 입력 파일의 루트 디렉터리
-    "strict": true // 엄격한 타입 검사 (권장)
-  },
-  "include": ["src/**/*"],
+  "extends": "@repo/typescript-config/react-library.json",
+  "include": ["src", "postcss.config.js"], // 포함할 파일 경로
   "exclude": ["node_modules", "dist"]
 }

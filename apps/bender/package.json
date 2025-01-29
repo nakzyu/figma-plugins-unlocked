@@ -2,7 +2,8 @@
   "name": "bender",
   "version": "0.1.0",
   "description": "Your Figma Plugin",
-  "main": "./dist/code.js",
+  "private": true,
+  "type": "module",
   "scripts": {
     "build:ui": "vite build --watch --config vite.config.ui.ts",
     "build:code": "vite build --watch --config vite.config.code.ts",
@@ -12,6 +13,9 @@
   "author": "Ibe Dwi",
   "license": "MIT",
   "dependencies": {
+    "@repo/ui": "workspace:*",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/vite": "^4.0.0",
     "@xstate/react": "^3.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -27,7 +31,7 @@
     "autoprefixer": "^10.4.14",
     "concurrently": "^9.1.2",
     "postcss": "^8.4.27",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "^4.0.0",
     "typescript": "^5.1.6",
     "vite": "^4.0.0"
   }

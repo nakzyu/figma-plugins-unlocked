@@ -2,7 +2,14 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import { viteSingleFile } from "vite-plugin-singlefile";
+import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
+  plugins: [
+    react(), // React and TypeScript plugin
+    viteSingleFile(),
+    tailwindcss(),
+  ],
+
   // Root directory (equivalent to Webpack's `context`)
   root: resolve(__dirname, "src"),
 
@@ -15,11 +22,6 @@ export default defineConfig({
       },
     },
   },
-
-  plugins: [
-    react(), // React and TypeScript plugin
-    viteSingleFile(),
-  ],
 
   resolve: {
     // Resolve these extensions automatically

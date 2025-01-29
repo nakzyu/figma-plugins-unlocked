@@ -1,14 +1,17 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useCallback } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
 import { FigmaMessage } from "../messages";
 import { HiOutlineCog } from "react-icons/hi";
+
+import { Button } from "@repo/ui";
+import "@repo/ui/styles.css";
 
 function App() {
   const onSendMessage = () => {
     const message: FigmaMessage = {
       type: "send-message-to-backend",
     };
+
     parent.postMessage({ pluginMessage: message }, "*");
   };
 
@@ -38,10 +41,11 @@ function App() {
       <div className="mt-6 w-full flex justify-center">
         <button
           onClick={onSendMessage}
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="text-7xl text-red-700 inline-flex px-20"
         >
           sda
         </button>
+        <Button variant="destructive">@@@@@</Button>
       </div>
     </div>
   );

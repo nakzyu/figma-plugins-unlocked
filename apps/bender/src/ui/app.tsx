@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 import { createRoot } from "react-dom/client";
-import { FigmaMessage } from "../messages";
+import { FigmaMessage } from "../code/messages";
 import { Button } from "@repo/ui";
 import "@repo/ui/styles.css";
 

@@ -15,11 +15,12 @@ export default defineConfig({
 
   build: {
     // Output directory
-    outDir: resolve(__dirname, "dist"),
+    outDir: resolve(__dirname, "dist/ui"),
     rollupOptions: {
       input: {
-        ui: resolve(__dirname, "src/app/index.html"), // Entry point for UI
+        ui: resolve(__dirname, "src/ui/index.html"), // Entry point for UI
       },
+      output: { dir: resolve(__dirname, "dist") },
     },
   },
 

@@ -2,11 +2,11 @@
   "name": "bender",
   "id": "1464228451812548879",
   "api": "1.0.0",
-  "main": "./dist/code.js",
+  "main": "./dist/code/code.js",
   "capabilities": [],
   "enableProposedApi": false,
   "editorType": ["figma"],
-  "ui": "./dist/app/index.html",
+  "ui": "./dist/ui/index.html",
   "networkAccess": {
     "allowedDomains": ["none"]
   }

@@ -6,3 +6,6 @@ node_modules
 out/
 dist/
 code.js
+
+dist-ui/
+dist-code/

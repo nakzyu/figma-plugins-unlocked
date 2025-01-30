@@ -3,12 +3,16 @@ import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 
 export default defineConfig({
+  plugins: [
+    react(), // React and TypeScript plugin
+  ],
+
   build: {
     // Output directory
-    outDir: resolve(__dirname, "dist"),
+    outDir: resolve(__dirname, "dist/code"),
     rollupOptions: {
       input: {
-        code: resolve(__dirname, "src/code.ts"), // Entry point for backend logic
+        code: resolve(__dirname, "src/code/code.ts"), // Entry point for backend logic
       },
       output: {
         inlineDynamicImports: true,
@@ -16,10 +20,6 @@ export default defineConfig({
       },
     },
   },
-
-  plugins: [
-    react(), // React and TypeScript plugin
-  ],
 
   resolve: {
     // Resolve these extensions automatically

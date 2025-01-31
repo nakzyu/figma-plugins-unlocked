@@ -1,5 +1,6 @@
 {
   "extends": "@repo/typescript-config/react-library.json",
   "include": ["src"], // 포함할 파일 경로
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "compilerOptions": { "baseUrl": "." }
 }

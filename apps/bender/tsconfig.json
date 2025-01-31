@@ -11,7 +11,8 @@
     "typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "."
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

@@ -1,4 +1,7 @@
 {
+  "extends": "@repo/typescript-config/path.json",
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "outDir": "dist",
     "declarationDir": "dist",
@@ -13,6 +16,5 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "."
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  }
 }

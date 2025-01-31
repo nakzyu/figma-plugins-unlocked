@@ -1,23 +1,17 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { FigmaMessage } from "../code/messages";
-import { Button, Slider } from "@repo/ui";
 import "@repo/ui/styles.css";
+import { Form } from "./components/form.js";
+import { FigmaMessage } from "../code/messages.js";
 
 function App() {
-  const onSendMessage = () => {
-    const message: FigmaMessage = {
-      type: "send-message-to-backend",
-    };
-
-    parent.postMessage({ pluginMessage: message }, "*");
-  };
+  const [message, setMessage] = useState<FigmaMessage>();
 
   const figmaMessageListener = useCallback((event: MessageEvent) => {
     const message = event.data.pluginMessage as FigmaMessage;
 
-    if (message.type === "send-message-to-ui") {
-      console.log("message from backend");
+    if (message.type === "send-text-node-to-ui") {
+      setMessage(message);
     }
   }, []);
 
@@ -28,22 +22,9 @@ function App() {
     };
   }, [figmaMessageListener]);
 
-  return (
-    <div className="container w-full h-full px-4">
-      <div className="w-full flex flex-col items-center mb-5">
-        <h1 className="text-xl">Figma React + Tailwind + Webpack Starter</h1>
-        <h2 className="text-md text-gray-400">Plugin starter</h2>
-      </div>
-      <Button className="cursor-pointer">sdasd</Button>
-      <Slider />
+  if (!message) return;
 
-      <div className="mt-6 w-full flex justify-center">
-        <Button onClick={onSendMessage} variant="destructive">
-          @@@@@
-        </Button>
-      </div>
-    </div>
-  );
+  return <Form message={message} />;
 }
 
 document.addEventListener("DOMContentLoaded", () => {

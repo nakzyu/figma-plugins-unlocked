@@ -1,6 +1,6 @@
 {
   "extends": "@repo/typescript-config/path.json",
-  "include": ["src"], // 포함할 파일 경로
+  "include": ["src"],
   "exclude": ["node_modules"],
   "compilerOptions": { "baseUrl": ".", "jsx": "react" }
 }

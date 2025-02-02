@@ -7,6 +7,11 @@ export const sendTextToUI = async (node: TextNode) => {
     type: "to-ui-send-text-node",
     payload: {
       text: node.characters,
+      fontInfo: {
+        fontName: node.fontName as FontName,
+        fontSize: node.fontSize as number,
+        fontWeight: node.fontWeight as number,
+      },
       css,
     },
   };

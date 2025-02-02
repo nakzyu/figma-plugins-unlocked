@@ -2,7 +2,9 @@ import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "@repo/ui";
 import {
+  BENDER_FORM_DEFAULT_VALUES,
   BenderFormType,
+  generateTextLayout,
   TO_CODE_CREATE_TEXT_NODE,
   TO_UI_SEND_TEXT_NODE,
 } from "@/common";
@@ -19,14 +21,18 @@ export type FormProps = {
 
 export const Form = ({ message }: FormProps) => {
   const methods = useForm<BenderFormType>({
-    defaultValues: { bendAmount: 20, curveType: "circle", letterSpacing: 1 },
+    defaultValues: BENDER_FORM_DEFAULT_VALUES,
   });
 
   const { handleSubmit, reset } = methods;
   const onSubmit = (data: BenderFormType) => {
+    const layouts = generateTextLayout(message, data, false);
     const createMessage: TO_CODE_CREATE_TEXT_NODE = {
       type: "to-code-create-text-node",
-      payload: [message, data],
+      payload: {
+        textLayout: layouts,
+        fontInfo: message.payload.fontInfo,
+      },
     };
     parent.postMessage({ pluginMessage: createMessage }, "*");
   };

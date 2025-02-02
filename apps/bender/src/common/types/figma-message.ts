@@ -2,12 +2,19 @@
  * This is example of message types that can be use in the `code.ts` or `app.tsx`
  */
 
-import { generateTextLayout } from "../utils";
+import { TextLayout } from "../utils";
+
+export type FontInfo = {
+  fontName: Symbol | FontName;
+  fontWeight: number;
+  fontSize: number;
+};
 
 export type TO_UI_SEND_TEXT_NODE = {
   type: "to-ui-send-text-node";
   payload: {
     text: TextNode["characters"];
+    fontInfo: FontInfo;
     css: Awaited<{
       color: string;
       "font-family": string;
@@ -21,7 +28,10 @@ export type TO_UI_SEND_TEXT_NODE = {
 
 export type TO_CODE_CREATE_TEXT_NODE = {
   type: "to-code-create-text-node";
-  payload: Parameters<typeof generateTextLayout>;
+  payload: {
+    textLayout: TextLayout[];
+    fontInfo: FontInfo;
+  };
 };
 
 export type FigmaMessage = TO_UI_SEND_TEXT_NODE | TO_CODE_CREATE_TEXT_NODE;

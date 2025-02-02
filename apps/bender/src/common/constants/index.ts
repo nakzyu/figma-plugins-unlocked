@@ -7,3 +7,9 @@ export const schema = z.object({
 });
 
 export type BenderFormType = z.infer<typeof schema>;
+
+export const BENDER_FORM_DEFAULT_VALUES: BenderFormType = {
+  bendAmount: 20,
+  curveType: "circle",
+  letterSpacing: 0,
+};

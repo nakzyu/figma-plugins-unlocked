@@ -1,17 +1,15 @@
-// textLayout.ts
-
 import { BenderFormType } from "@/common/constants";
-import { TO_UI_SEND_TEXT_NODE } from "../types";
+import { FontInfo, TO_UI_SEND_TEXT_NODE } from "../types";
 
 /**
- * 각 문자에 대한 레이아웃 정보를 담은 객체 타입
+ * Type for an object containing layout information for each character.
  */
 export interface TextLayout {
   char: string;
   x: number;
   y: number;
   rotation: number;
-  style: {
+  css: {
     color: string;
     fontFamily: string;
     fontSize: string;
@@ -22,18 +20,20 @@ export interface TextLayout {
 }
 
 /**
- * 주어진 메시지와 설정값에 따라 각 문자에 대한 좌표, 회전, 스타일 정보를 계산합니다.
+ * Calculates the position, rotation, and style information for each character based on the given message and settings.
  *
- * 이 함수는 React 컴포넌트와 Figma 플러그인 모두에서 사용할 수 있습니다.
- * (Figma 플러그인 환경에서는 DOM이 없을 수 있으므로, fallback으로 approximate width를 사용합니다.)
+ * This function can be used in both React components and Figma plugins.
+ * (In Figma plugin environments where the DOM might not be available, a fallback approximate width is used.)
  *
- * @param message 메시지 객체 (텍스트와 CSS 정보 포함)
- * @param settings 곡선 타입, 굽힘 정도, letterSpacing 등
- * @returns TextLayout 객체 배열
+ * @param message A message object containing text and CSS information.
+ * @param settings An object containing curve type, bend amount, and letter spacing.
+ * @param isUI A boolean indicating whether the function is running in a UI environment.
+ * @returns An array of TextLayout objects.
  */
 export function generateTextLayout(
   message: TO_UI_SEND_TEXT_NODE,
-  { curveType, bendAmount, letterSpacing }: BenderFormType
+  { curveType, bendAmount, letterSpacing }: BenderFormType,
+  isUI: boolean
 ): TextLayout[] {
   const characters = message.payload.text.split("");
   const css = message.payload.css;
@@ -50,18 +50,19 @@ export function generateTextLayout(
     );
   }
 
-  // 전체 텍스트 길이 (아크 길이)
+  // Total text length (arc length)
   const totalArcLength = charWidths.reduce((sum, w) => sum + w, 0);
 
-  // 각 문자에 대해 위치, 회전 계산
+  // Calculate position and rotation for each character
   const layouts: TextLayout[] = characters.map((char, index) => {
-    // 이전 문자들의 누적 폭 (왼쪽 기준)
+    // Cumulative width of previous characters (from the left)
     const prevArcLength = charWidths
       .slice(0, index)
       .reduce((sum, w) => sum + w, 0);
-    // 현재 문자의 중앙 위치 (누적 폭 + 해당 문자 폭의 절반)
-    const charCenterArc = prevArcLength + charWidths[index] / 2;
-    // 전체 텍스트 중앙 (아크 기준)
+    // Center position of the current character.
+    // In a UI environment, add half of the current character's width; otherwise, use the left edge.
+    const charCenterArc = prevArcLength + (isUI ? charWidths[index] / 2 : 0);
+    // Overall center of the text (based on the arc)
     const centerOffset = totalArcLength / 2;
 
     let x = 0,
@@ -70,13 +71,13 @@ export function generateTextLayout(
 
     if (curveType === "circle") {
       if (bendAmount === 0) {
-        // bendAmount가 0이면 직선 배치 (중앙 정렬)
+        // If bendAmount is 0, position characters in a straight line (centered)
         x = charCenterArc - centerOffset;
         y = 0;
       } else {
         const absBend = Math.abs(bendAmount);
-        const delta = (Math.PI * absBend) / 50; // 전체 각도 span
-        const radius = totalArcLength / delta; // 반지름 계산
+        const delta = (Math.PI * absBend) / 50; // Total angle span
+        const radius = totalArcLength / delta; // Calculate the radius
         const angle = ((charCenterArc - centerOffset) / totalArcLength) * delta;
         x = radius * Math.sin(angle);
         y =
@@ -91,12 +92,14 @@ export function generateTextLayout(
       y = waveHeight * Math.sin((index / characters.length) * 2 * Math.PI);
     }
 
+    canvas.remove();
+
     return {
       char,
       x,
       y,
       rotation,
-      style: {
+      css: {
         color: css["color"],
         fontFamily: css["font-family"],
         fontSize: css["font-size"],

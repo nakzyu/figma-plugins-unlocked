@@ -1,8 +1,8 @@
-import { FigmaMessage } from "@/common";
-import { createTextNodes } from "./create-text-nodes";
+import { FigmaMessage, TO_CODE_CREATE_TEXT_NODE } from "@/common";
+import { createTextNode } from "./create-text-node";
 
 export const codeListener = async (msg: FigmaMessage) => {
   if (msg.type === "to-code-create-text-node") {
-    // createTextNodes(msg.payload);
+    createTextNode(msg as TO_CODE_CREATE_TEXT_NODE);
   }
 };

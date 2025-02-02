@@ -13,8 +13,8 @@ export const Preview: React.FC<FormProps> = ({ message }) => {
     const render = async () => {
       const fontDescriptor = `${message.payload.css["font-size"]} ${message.payload.css["font-family"]}`;
       const isFontLoaded = document.fonts.check(fontDescriptor);
-      if (!isFontLoaded) await document.fonts.load(fontDescriptor);
 
+      if (!isFontLoaded) await document.fonts.load(fontDescriptor);
       const newLayouts = generateTextLayout(
         message,
         {

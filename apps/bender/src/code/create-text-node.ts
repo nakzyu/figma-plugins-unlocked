@@ -13,6 +13,7 @@ export const createTextNode = async (message: TO_CODE_CREATE_TEXT_NODE) => {
 
   const textNodes = textLayout.map((data) => {
     const textNode = figma.createText();
+    textNode.fontName = fontInfo.fontName;
     textNode.fontSize = fontInfo.fontSize;
     textNode.name = data.char;
     textNode.characters = data.char;
@@ -24,5 +25,4 @@ export const createTextNode = async (message: TO_CODE_CREATE_TEXT_NODE) => {
   });
 
   figma.group(textNodes, figma.currentPage);
-  figma.closePlugin();
 };

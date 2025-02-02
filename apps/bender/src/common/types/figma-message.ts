@@ -5,7 +5,7 @@
 import { TextLayout } from "../utils";
 
 export type FontInfo = {
-  fontName: Symbol | FontName;
+  fontName: FontName;
   fontWeight: number;
   fontSize: number;
 };

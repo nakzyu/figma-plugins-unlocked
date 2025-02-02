@@ -6,6 +6,13 @@ export type FigmaMessage = {
   type: "send-text-node-to-ui";
   payload: {
     text: TextNode["characters"];
-    css: Awaited<ReturnType<TextNode["getCSSAsync"]>>;
+    css: Awaited<{
+      color: string;
+      "font-family": string;
+      "font-size": string;
+      "font-style": string;
+      "font-weight": string;
+      "line-height": "normal";
+    }>;
   };
 };

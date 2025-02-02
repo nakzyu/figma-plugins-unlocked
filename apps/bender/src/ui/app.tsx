@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "@repo/ui/styles.css";
-import { Form } from "./components/form.js";
-import { FigmaMessage } from "../code/messages.js";
+import { Form } from "./components/form";
+import { FigmaMessage } from "../common/types/messages";
 
 function App() {
   const [message, setMessage] = useState<FigmaMessage>();
@@ -24,7 +24,11 @@ function App() {
 
   if (!message) return;
 
-  return <Form message={message} />;
+  return (
+    <div>
+      <Form message={message} />
+    </div>
+  );
 }
 
 document.addEventListener("DOMContentLoaded", () => {

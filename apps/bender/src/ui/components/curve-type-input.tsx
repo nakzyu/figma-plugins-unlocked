@@ -1,7 +1,6 @@
 "use client";
 
 import { useFormContext } from "react-hook-form";
-import { BenderFormType } from "../constants";
 import {
   FormField,
   FormItem,
@@ -12,6 +11,7 @@ import {
   FormMessage,
 } from "@repo/ui";
 import React from "react";
+import { BenderFormType } from "@/common";
 
 export const CurveTypeInput = () => {
   const form = useFormContext<BenderFormType>();
@@ -21,8 +21,8 @@ export const CurveTypeInput = () => {
       control={form.control}
       name="curveType"
       render={({ field }) => (
-        <FormItem className="space-y-3">
-          <FormLabel>Notify me about...</FormLabel>
+        <FormItem className="space-y-3 flex flex-col">
+          <FormLabel>Curve Type</FormLabel>
           <FormControl>
             <RadioGroup
               onValueChange={field.onChange}
@@ -33,13 +33,13 @@ export const CurveTypeInput = () => {
                 <FormControl>
                   <RadioGroupItem value="circle" />
                 </FormControl>
-                <FormLabel className="font-normal">circle</FormLabel>
+                <FormLabel className="font-normal">Circle</FormLabel>
               </FormItem>
               <FormItem className="flex items-center space-x-3 space-y-0">
                 <FormControl>
                   <RadioGroupItem value="wave" />
                 </FormControl>
-                <FormLabel className="font-normal">wave</FormLabel>
+                <FormLabel className="font-normal">Wave</FormLabel>
               </FormItem>
             </RadioGroup>
           </FormControl>

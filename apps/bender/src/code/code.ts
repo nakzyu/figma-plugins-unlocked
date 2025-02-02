@@ -1,4 +1,3 @@
-import { FigmaMessage } from "./messages";
 import { sendTextToUI } from "./send-text-to-ui";
 
 const selection = figma.currentPage.selection;

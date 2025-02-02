@@ -1,4 +1,4 @@
-import { FigmaMessage } from "./messages";
+import { FigmaMessage } from "@/common";
 
 export const sendTextToUI = async (node: TextNode) => {
   const css = await node.getCSSAsync();

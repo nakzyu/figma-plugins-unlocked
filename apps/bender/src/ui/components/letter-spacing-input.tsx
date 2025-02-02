@@ -12,8 +12,10 @@ import {
   Input,
 } from "@repo/ui";
 import React from "react";
-import { BenderFormType } from "@/common";
+import { BenderFormType, onChangeWithMinMax } from "@/common";
 
+const min = 0;
+const max = 10;
 export const LetterSpacingInput = () => {
   const form = useFormContext<BenderFormType>();
 
@@ -31,13 +33,20 @@ export const LetterSpacingInput = () => {
               onValueChange={(vals) => {
                 field.onChange(vals[0]);
               }}
-              min={0}
-              max={10}
+              min={min}
+              max={max}
               step={0.1}
             />
           </FormControl>
           <FormControl>
-            <Input {...field} type="number" min={0} max={10} step={0.1} />
+            <Input
+              {...field}
+              type="number"
+              min={min}
+              max={max}
+              step={0.1}
+              onChange={onChangeWithMinMax(field.onChange, min, max)}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>

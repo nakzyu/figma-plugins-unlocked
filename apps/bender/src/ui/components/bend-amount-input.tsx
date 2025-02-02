@@ -11,8 +11,10 @@ import {
   Input,
 } from "@repo/ui";
 import React from "react";
-import { BenderFormType } from "@/common";
+import { BenderFormType, onChangeWithMinMax } from "@/common";
 
+const min = -100;
+const max = 100;
 export const BendAmountInput = () => {
   const form = useFormContext<BenderFormType>();
 
@@ -30,13 +32,20 @@ export const BendAmountInput = () => {
               onValueChange={(vals) => {
                 field.onChange(vals[0]);
               }}
-              min={-100}
-              max={100}
+              min={min}
+              max={max}
               step={1}
             />
           </FormControl>
           <FormControl>
-            <Input {...field} type="number" min={-100} max={100} step={1} />
+            <Input
+              {...field}
+              type="number"
+              min={min}
+              max={max}
+              step={1}
+              onChange={onChangeWithMinMax(field.onChange, min, max)}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>

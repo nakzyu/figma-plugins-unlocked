@@ -25,15 +25,22 @@ export const Form = ({ message }: FormProps) => {
     <FormProvider {...methods}>
       <form className="flex p-1 gap-2" onSubmit={handleSubmit(onSubmit)}>
         <Preview message={message} />
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 w-[180px]">
           <CurveTypeInput />
           <BendAmountInput />
           <LetterSpacingInput />
-          <div>
-            <Button type="reset" variant="outline" onClick={() => reset()}>
+          <div className="w-full gap-2 flex">
+            <Button
+              className="w-full"
+              type="reset"
+              variant="outline"
+              onClick={() => reset()}
+            >
               Reset
             </Button>
-            <Button type="submit">Apply</Button>
+            <Button className="w-full" type="submit">
+              Apply
+            </Button>
           </div>
         </div>
       </form>

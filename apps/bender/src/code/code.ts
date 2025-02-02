@@ -5,7 +5,7 @@ const selection = figma.currentPage.selection;
 if (selection.length === 1 && selection[0].type === "TEXT") {
   figma.showUI(__html__, {
     width: 600,
-    height: 400,
+    height: 366,
   });
 
   sendTextToUI(selection[0]);

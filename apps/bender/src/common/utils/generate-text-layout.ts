@@ -50,22 +50,18 @@ export function generateTextLayout(
   const css = message.payload.css;
 
   let charWidths: number[] = [];
-  // canvas를 통해 문자 폭 계산 (React나 Figma plugin UI 환경에서는 document 사용 가능)
-  if (typeof document !== "undefined") {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    if (ctx) {
-      ctx.font = `${css["font-size"]} ${css["font-family"]}`;
-      charWidths = characters.map(
-        (char) => ctx.measureText(char).width + letterSpacing
-      );
-    }
+
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  if (ctx) {
+    ctx.font = `${css["font-size"]} ${css["font-family"]}`;
+    charWidths = characters.map(
+      (char) => ctx.measureText(char).width + letterSpacing
+    );
   }
-  // 만약 document가 없다면 (예: Figma 메인 스레드) fallback: 각 문자 폭을 대략 font-size로 가정
-  if (charWidths.length === 0) {
-    const approxWidth = parseInt(css["font-size"], 10) || 16;
-    charWidths = characters.map(() => approxWidth + letterSpacing);
-  }
+
+  console.log(letterSpacing, "char widths", charWidths);
 
   // 전체 텍스트 길이 (아크 길이)
   const totalArcLength = charWidths.reduce((sum, w) => sum + w, 0);
@@ -100,7 +96,7 @@ export function generateTextLayout(
           bendAmount > 0
             ? radius * (1 - Math.cos(angle))
             : -radius * (1 - Math.cos(angle));
-        rotation = (angle * 180) / Math.PI;
+        rotation = ((bendAmount > 0 ? angle : -angle) * 180) / Math.PI;
       }
     } else if (curveType === "wave") {
       x = charCenterArc - centerOffset;

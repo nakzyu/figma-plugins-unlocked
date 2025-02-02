@@ -1,25 +1,33 @@
-// Preview.tsx
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useWatch } from "react-hook-form";
+import { BenderFormType } from "@/common/constants";
 import { FormProps } from "./form";
-import { BenderFormType, generateTextLayout, TextLayout } from "@/common";
+import { TextLayout, generateTextLayout } from "@/common";
 
 export const Preview: React.FC<FormProps> = ({ message }) => {
   const { curveType, bendAmount, letterSpacing } = useWatch<BenderFormType>();
+  const [layouts, setLayouts] = useState<TextLayout[]>([]);
 
-  // 공통 레이아웃 계산 함수 호출
-  const layouts: TextLayout[] = generateTextLayout(message, {
-    curveType,
-    bendAmount,
-    letterSpacing,
-  });
+  console.log(bendAmount, letterSpacing);
+
+  useEffect(() => {
+    if (document.fonts) {
+      document.fonts.ready.then(() => {
+        const newLayouts = generateTextLayout(message, {
+          curveType,
+          bendAmount,
+          letterSpacing,
+        });
+        setLayouts(newLayouts);
+      });
+    }
+  }, [message, curveType, bendAmount, letterSpacing]);
 
   return (
     <div
       className="relative"
       style={{
-        width: "300px",
+        width: "400px",
         position: "relative",
         display: "flex",
         justifyContent: "center",
@@ -40,7 +48,6 @@ export const Preview: React.FC<FormProps> = ({ message }) => {
             position: "absolute",
             top: "50%",
             left: "50%",
-            // 각 문자 중심 기준 배치 (translate(-50%, -50%) 추가)
             transform: `translate(-50%, -50%) translate(${layout.x}px, ${layout.y}px) rotate(${layout.rotation}deg)`,
             whiteSpace: "nowrap",
           }}

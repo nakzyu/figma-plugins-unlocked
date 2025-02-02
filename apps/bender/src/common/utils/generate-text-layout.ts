@@ -1,18 +1,7 @@
 // textLayout.ts
 
 import { BenderFormType } from "@/common/constants";
-
-/**
- * 메시지 타입 (필요에 따라 확장)
- */
-export interface Message {
-  payload: {
-    text: string;
-    css: {
-      [key: string]: string;
-    };
-  };
-}
+import { TO_UI_SEND_TEXT_NODE } from "../types";
 
 /**
  * 각 문자에 대한 레이아웃 정보를 담은 객체 타입
@@ -43,7 +32,7 @@ export interface TextLayout {
  * @returns TextLayout 객체 배열
  */
 export function generateTextLayout(
-  message: Message,
+  message: TO_UI_SEND_TEXT_NODE,
   { curveType, bendAmount, letterSpacing }: BenderFormType
 ): TextLayout[] {
   const characters = message.payload.text.split("");
@@ -60,8 +49,6 @@ export function generateTextLayout(
       (char) => ctx.measureText(char).width + letterSpacing
     );
   }
-
-  console.log(letterSpacing, "char widths", charWidths);
 
   // 전체 텍스트 길이 (아크 길이)
   const totalArcLength = charWidths.reduce((sum, w) => sum + w, 0);

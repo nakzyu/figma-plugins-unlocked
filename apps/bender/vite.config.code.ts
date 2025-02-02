@@ -1,12 +1,9 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import path, { resolve } from "path";
+import { resolve } from "path";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [
-    react(), // React and TypeScript plugin
-  ],
-
+  plugins: [tsconfigPaths()],
   build: {
     // Output directory
     outDir: resolve(__dirname, "dist/code"),
@@ -22,14 +19,7 @@ export default defineConfig({
   },
 
   resolve: {
-    alias: { "@": path.resolve(__dirname, "src") },
     // Resolve these extensions automatically
     extensions: [".tsx", ".ts", ".jsx", ".js"],
-  },
-
-  server: {
-    // Development server configuration
-    port: 3000,
-    open: true, // Automatically open the browser
   },
 });

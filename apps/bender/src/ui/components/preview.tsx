@@ -8,8 +8,6 @@ export const Preview: React.FC<FormProps> = ({ message }) => {
   const { curveType, bendAmount, letterSpacing } = useWatch<BenderFormType>();
   const [layouts, setLayouts] = useState<TextLayout[]>([]);
 
-  console.log(bendAmount, letterSpacing);
-
   useEffect(() => {
     if (document.fonts) {
       document.fonts.ready.then(() => {

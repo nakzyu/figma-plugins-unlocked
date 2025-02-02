@@ -1,7 +1,11 @@
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Button } from "@repo/ui";
-import { BenderFormType, FigmaMessage } from "@/common";
+import {
+  BenderFormType,
+  TO_CODE_CREATE_TEXT_NODE,
+  TO_UI_SEND_TEXT_NODE,
+} from "@/common";
 import {
   LetterSpacingInput,
   CurveTypeInput,
@@ -10,7 +14,7 @@ import {
 } from ".";
 
 export type FormProps = {
-  message: FigmaMessage;
+  message: TO_UI_SEND_TEXT_NODE;
 };
 
 export const Form = ({ message }: FormProps) => {
@@ -19,7 +23,13 @@ export const Form = ({ message }: FormProps) => {
   });
 
   const { handleSubmit, reset } = methods;
-  const onSubmit = () => {};
+  const onSubmit = (data: BenderFormType) => {
+    const createMessage: TO_CODE_CREATE_TEXT_NODE = {
+      type: "to-code-create-text-node",
+      payload: [message, data],
+    };
+    parent.postMessage({ pluginMessage: createMessage }, "*");
+  };
 
   return (
     <FormProvider {...methods}>

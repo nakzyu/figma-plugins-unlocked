@@ -1,8 +1,5 @@
 import { TO_CODE_CREATE_TEXT_NODE } from "@/common";
 
-/**
- * Figma 플러그인에서 메시지와 설정값을 바탕으로 텍스트 노드를 생성하는 예시 함수
- */
 export const createTextNode = async (message: TO_CODE_CREATE_TEXT_NODE) => {
   const { payload } = message;
   const { fontInfo, textLayout } = payload;

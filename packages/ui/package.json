@@ -5,6 +5,7 @@
   "sideEffects": [
     "**/*.css"
   ],
+  "main": "./src/index.ts",
   "types": "./src/index.ts",
   "exports": {
     "./styles.css": "./src/styles.css",

@@ -1,5 +1,4 @@
-import { codeListener } from "./code-listener";
-import { sendTextToUI } from "./send-text-to-ui";
+import { sendTextToUI, codeListener } from "./components";
 
 const selection = figma.currentPage.selection;
 

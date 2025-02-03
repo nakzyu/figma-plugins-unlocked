@@ -28,7 +28,6 @@ export default defineConfig({
   },
 
   resolve: {
-    alias: { "@": path.resolve(__dirname, "src") },
     // Resolve these extensions automatically
     extensions: [".tsx", ".ts", ".jsx", ".js"],
   },

@@ -1,5 +1,5 @@
 {
-  "name": "nao",
+  "name": "figma-plugins-unlocked",
   "private": true,
   "scripts": {
     "build": "turbo build",

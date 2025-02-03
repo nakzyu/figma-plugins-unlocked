@@ -1,0 +1,32 @@
+<svg
+  width="128"
+  height="128"
+  viewBox="0 0 280 280"
+  xmlns="http://www.w3.org/2000/svg"
+  fill="black"
+>
+  <mask id="subtract">
+
+    <path
+      d="M0 53C0 23.7289 23.7289 0 53 0H227C256.271 0 280 23.7289 280 53V227C280 256.271 256.271 280 227 280H53C23.7289 280 0 256.271 0 227V53Z"
+      fill="white"
+    />
+
+    <path
+      d="
+        M80,155
+        A80,80 0 0 0 200,155
+      "
+      stroke="black"
+      stroke-width="30"
+      stroke-linecap="round"
+      fill="none"
+    />
+  </mask>
+
+  <path
+    d="M0 53C0 23.7289 23.7289 0 53 0H227C256.271 0 280 23.7289 280 53V227C280 256.271 256.271 280 227 280H53C23.7289 280 0 256.271 0 227V53Z"
+    fill="black"
+    mask="url(#subtract)"
+  />
+</svg>

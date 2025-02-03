@@ -39,7 +39,7 @@ export const Form = ({ message }: FormProps) => {
 
   return (
     <FormProvider {...methods}>
-      <form className="flex p-1 gap-2" onSubmit={handleSubmit(onSubmit)}>
+      <form className="flex p-2 gap-2" onSubmit={handleSubmit(onSubmit)}>
         <Preview message={message} />
         <div className="flex flex-col gap-6 w-[180px]">
           <CurveTypeInput />

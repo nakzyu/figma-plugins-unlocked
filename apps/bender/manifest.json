@@ -1,5 +1,5 @@
 {
-  "name": "bender",
+  "name": "Bender – Bend Your Text into an Arc!",
   "id": "1464228451812548879",
   "api": "1.0.0",
   "main": "./dist/code/code.js",
@@ -9,5 +9,6 @@
   "ui": "./dist/ui/index.html",
   "networkAccess": {
     "allowedDomains": ["none"]
-  }
+  },
+  "documentAccess": "dynamic-page"
 }

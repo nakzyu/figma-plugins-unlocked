@@ -11,12 +11,16 @@
     "./styles.css": "./src/styles.css",
     ".": "./src/index.ts"
   },
+  "scripts": {
+    "add": "pnpm dlx shadcn@latest add"
+  },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-radio-group": "^1.2.2",
     "@radix-ui/react-slider": "^1.2.2",
     "@radix-ui/react-slot": "^1.1.1",
+    "button": "^1.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.473.0",

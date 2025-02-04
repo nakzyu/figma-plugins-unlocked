@@ -32,9 +32,6 @@ importers:
       react-hook-form:
         specifier: ^7.54.2
         version: 7.54.2(react@19.0.0)
-      vite-tsconfig-paths:
-        specifier: ^5.1.4
-        version: 5.1.4(typescript@5.5.4)(vite@4.5.9(@types/node@20.17.6)(lightningcss@1.29.1)(sass@1.83.4)(terser@5.37.0))
       zod:
         specifier: ^3.24.1
         version: 3.24.1
@@ -72,6 +69,9 @@ importers:
       vite-plugin-singlefile:
         specifier: ^2.1.0
         version: 2.1.0(rollup@4.31.0)(vite@4.5.9(@types/node@20.17.6)(lightningcss@1.29.1)(sass@1.83.4)(terser@5.37.0))
+      vite-tsconfig-paths:
+        specifier: ^5.1.4
+        version: 5.1.4(typescript@5.5.4)(vite@4.5.9(@types/node@20.17.6)(lightningcss@1.29.1)(sass@1.83.4)(terser@5.37.0))
 
   packages/eslint-config:
     devDependencies:
@@ -128,6 +128,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.1.1
         version: 1.1.1(@types/react@18.3.0)(react@19.0.0)
+      button:
+        specifier: ^1.1.1
+        version: 1.1.1
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -1119,6 +1122,9 @@ packages:
 
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
+
+  button@1.1.1:
+    resolution: {integrity: sha512-/eICyCdXkem6L3i02jNfo7CgY0lDtELov2IhiTAUkkl3kTnnr/Jee0Fjnj4TuLwl8wkdtplZaWWXMCeowmkmpA==}
 
   call-bind@1.0.7:
     resolution: {integrity: sha512-GHTSNSYICQ7scH7sZ+M2rFopRoLh8t2bLSW6BbgrtLsahOIB5iyAVJf9GjWK3cYTDaMj4XdBpM1cA6pIS0Kv2w==}
@@ -3128,6 +3134,8 @@ snapshots:
 
   buffer-from@1.1.2:
     optional: true
+
+  button@1.1.1: {}
 
   call-bind@1.0.7:
     dependencies:

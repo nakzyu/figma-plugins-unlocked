@@ -1,7 +1,6 @@
 {
   "name": "bender",
   "version": "0.1.0",
-  "description": "Your Figma Plugin",
   "private": true,
   "type": "module",
   "scripts": {

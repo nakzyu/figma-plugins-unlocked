@@ -6,29 +6,21 @@ import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [
-    react(), // React and TypeScript plugin
-    viteSingleFile(),
-    tailwindcss(),
-    tsconfigPaths(),
-  ],
+  plugins: [react(), viteSingleFile(), tailwindcss(), tsconfigPaths()],
 
-  // Root directory (equivalent to Webpack's `context`)
   root: resolve(__dirname, "src"),
 
   build: {
-    // Output directory
     outDir: resolve(__dirname, "dist/ui"),
     rollupOptions: {
       input: {
-        ui: resolve(__dirname, "src/ui/index.html"), // Entry point for UI
+        ui: resolve(__dirname, "src/ui/index.html"),
       },
       output: { dir: resolve(__dirname, "dist") },
     },
   },
 
   resolve: {
-    // Resolve these extensions automatically
     extensions: [".tsx", ".ts", ".jsx", ".js"],
   },
 });

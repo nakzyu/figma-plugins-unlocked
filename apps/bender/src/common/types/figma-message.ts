@@ -1,7 +1,3 @@
-/**
- * This is example of message types that can be use in the `code.ts` or `app.tsx`
- */
-
 import { TextLayout } from "../utils";
 
 export type FontInfo = {

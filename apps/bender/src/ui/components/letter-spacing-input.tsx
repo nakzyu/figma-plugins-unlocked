@@ -10,7 +10,8 @@ import {
   Input,
 } from "@repo/ui";
 import React from "react";
-import { BenderFormType, onChangeWithMinMax } from "@/common";
+import { BenderFormType } from "@/common";
+import { onChangeWithMinMax } from "../utils";
 
 const min = 0;
 const max = 10;

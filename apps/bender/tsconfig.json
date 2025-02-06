@@ -1,24 +1,9 @@
 {
-  "extends": "@repo/typescript-config/path.json",
+  "extends": "@repo/typescript-config/figma-plugin.json",
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "outDir": "dist",
-    "declarationDir": "dist",
-    "target": "es6",
-    "lib": ["es2016", "dom"],
-    "jsx": "react",
-    "strict": true,
-    "declaration": true,
-    "experimentalDecorators": true,
-    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
-    "moduleResolution": "node",
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@repo/ui/*": ["../../packages/ui/src/*"]
-    }
+    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"]
   }
 }

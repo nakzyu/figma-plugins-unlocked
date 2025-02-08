@@ -6,7 +6,6 @@ import {
   ShapeBuilderForm,
   TO_CODE_CREATE_3D_SHAPE,
 } from "@/common";
-import { doo } from "@/common/utils/do";
 
 export const Form = () => {
   const methods = useForm<ShapeBuilderForm>({
@@ -16,7 +15,7 @@ export const Form = () => {
   const { handleSubmit, reset } = methods;
   const onSubmit = (data: ShapeBuilderForm) => {
     const createMessage: TO_CODE_CREATE_3D_SHAPE = {
-      type: "to-code-create-text-node",
+      type: "to-code-create-3d-shape",
       payload: {},
     };
     parent.postMessage({ pluginMessage: createMessage }, "*");
@@ -35,7 +34,7 @@ export const Form = () => {
             >
               Reset
             </Button>
-            <Button className="w-full" type="submit" onClick={doo}>
+            <Button className="w-full" type="submit">
               Apply
             </Button>
           </div>

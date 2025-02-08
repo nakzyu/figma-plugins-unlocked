@@ -1,0 +1,36 @@
+{
+  "name": "3d-shape-builder",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:ui": "vite build --config vite.config.ui.ts",
+    "build:code": "vite build --config vite.config.code.ts",
+    "dev": "concurrently \"pnpm build:ui --watch\" \"pnpm build:code --watch\"",
+    "build": "concurrently \"pnpm build:ui\" \"pnpm build:code\""
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@repo/ui": "workspace:*",
+    "@types/three": "^0.173.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "three": "^0.173.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.72.0",
+    "@repo/typescript-config": "workspace:*",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.0",
+    "concurrently": "^9.1.2",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.1.6",
+    "vite": "^5.4.11",
+    "vite-plugin-singlefile": "^2.1.0",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}

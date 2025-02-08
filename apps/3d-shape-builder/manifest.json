@@ -1,0 +1,14 @@
+{
+  "name": "3D Shape Builder",
+  "id": "1469849778284902003",
+  "api": "1.0.0",
+  "main": "./dist/code/code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "ui": "./dist/ui/index.html",
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  },
+  "documentAccess": "dynamic-page"
+}

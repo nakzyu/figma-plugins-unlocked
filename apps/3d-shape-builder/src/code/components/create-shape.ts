@@ -1,7 +1,7 @@
 import * as THREE from "three";
+import { centerNodeOnScreen } from "@repo/figma";
 
 export const createShape = () => {
-  const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
   camera.position.set(2, 2, 3);
   camera.lookAt(new THREE.Vector3(0, 0, 0));
@@ -122,6 +122,7 @@ export const createShape = () => {
 
   const groupNode = figma.group(createdVectorNodes, figma.currentPage);
   groupNode.name = "Cube";
+  centerNodeOnScreen(groupNode);
   figma.currentPage.selection = [groupNode];
   figma.viewport.scrollAndZoomIntoView([groupNode]);
 };

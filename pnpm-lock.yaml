@@ -20,6 +20,9 @@ importers:
 
   apps/3d-shape-builder:
     dependencies:
+      '@repo/figma':
+        specifier: workspace:*
+        version: link:../../packages/figma
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -84,6 +87,9 @@ importers:
 
   apps/bender:
     dependencies:
+      '@repo/figma':
+        specifier: workspace:*
+        version: link:../../packages/figma
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -175,6 +181,24 @@ importers:
       typescript-eslint:
         specifier: ^8.15.0
         version: 8.15.0(eslint@9.15.0(jiti@2.4.2))(typescript@5.5.4)
+
+  packages/figma:
+    devDependencies:
+      '@figma/plugin-typings':
+        specifier: ^1.72.0
+        version: 1.96.0
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/node':
+        specifier: ^20.11.24
+        version: 20.17.6
+      typescript:
+        specifier: ^5.1.6
+        version: 5.5.4
 
   packages/typescript-config: {}
 

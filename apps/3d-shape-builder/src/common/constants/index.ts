@@ -1,16 +1,27 @@
 import { z } from "zod";
 
+export const SHAPE = {
+  cube: "cube",
+  rectangle: "rectangle",
+  cylinder: "cylinder",
+  pyramid: "pyramid",
+  "hexagonal-prism": "hexagonal-prism",
+  "pentagonal-prism": "pentagonal-prism",
+} as const;
+
+export const SHAPE_ARRAY = [...Object.values(SHAPE)] as const;
+
 const width = z.number();
 const height = z.number();
 const length = z.number();
 const radius = z.number();
 
 const cubeSchema = z.object({
-  shape: z.literal("cube"),
+  shape: z.literal(SHAPE.cube),
 });
 
 const rectangleSchema = z.object({
-  shape: z.literal("rectangle"),
+  shape: z.literal(SHAPE.rectangle),
   option: z.object({
     width,
     height,
@@ -19,7 +30,7 @@ const rectangleSchema = z.object({
 });
 
 const cylinderSchema = z.object({
-  shape: z.literal("cylinder"),
+  shape: z.literal(SHAPE.cylinder),
   option: z.object({
     radius,
     height,
@@ -27,11 +38,11 @@ const cylinderSchema = z.object({
 });
 
 const pyramidSchema = z.object({
-  shape: z.literal("pyramid"),
+  shape: z.literal(SHAPE.pyramid),
 });
 
 const hexagonalPrismSchema = z.object({
-  shape: z.literal("hexagonal-prism"),
+  shape: z.literal(SHAPE["hexagonal-prism"]),
   option: z.object({
     width,
     height,
@@ -40,7 +51,7 @@ const hexagonalPrismSchema = z.object({
 });
 
 const pentagonalPrismSchema = z.object({
-  shape: z.literal("pentagonal-prism"),
+  shape: z.literal(SHAPE["pentagonal-prism"]),
   option: z.object({
     width,
     height,

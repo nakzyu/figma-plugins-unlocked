@@ -58,7 +58,26 @@ export const schema = z.discriminatedUnion("shape", [
 ]);
 
 export type ShapeBuilderForm = z.infer<typeof schema>;
-
-export const SHAPE_BUILDER_FORM_DEFAULT_VALUES: ShapeBuilderForm = {
-  shape: "cube",
+export const SHAPE_BUILDER_FORM_DEFAULT_VALUES: Record<
+  ShapeBuilderForm["shape"],
+  ShapeBuilderForm
+> = {
+  cube: { shape: "cube" },
+  rectangle: {
+    shape: "rectangle",
+    option: { width: 1, height: 1, length: 1 },
+  },
+  cylinder: {
+    shape: "cylinder",
+    option: { radius: 1, height: 1 },
+  },
+  pyramid: { shape: "pyramid" },
+  "hexagonal-prism": {
+    shape: "hexagonal-prism",
+    option: { width: 1, height: 1, length: 1 },
+  },
+  "pentagonal-prism": {
+    shape: "pentagonal-prism",
+    option: { width: 1, height: 1, length: 1 },
+  },
 };

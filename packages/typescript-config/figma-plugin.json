@@ -2,16 +2,17 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./path.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "declarationDir": "dist",
-    "target": "es6",
-    "lib": ["es2016", "dom"],
-    "jsx": "react",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "jsx": "react-jsx",
     "strict": true,
     "declaration": true,
-    "experimentalDecorators": true,
+    "outDir": "dist",
+    "declarationDir": "dist",
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true
   }
 }

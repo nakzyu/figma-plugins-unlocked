@@ -1,6 +1,6 @@
 {
-  "name": "bender",
-  "version": "0.1.0",
+  "name": "3d-shape-builder",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,9 +13,11 @@
   "dependencies": {
     "@repo/ui": "workspace:*",
     "@repo/figma": "workspace:*",
+    "@types/three": "^0.173.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
+    "three": "^0.173.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {

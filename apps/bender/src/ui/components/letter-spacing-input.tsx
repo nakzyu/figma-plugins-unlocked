@@ -5,7 +5,6 @@ import {
   FormItem,
   FormLabel,
   FormControl,
-  FormMessage,
   Slider,
   Input,
 } from "@repo/ui";
@@ -47,7 +46,6 @@ export const LetterSpacingInput = () => {
               onChange={onChangeWithMinMax(field.onChange, min, max)}
             />
           </FormControl>
-          <FormMessage />
         </FormItem>
       )}
     />

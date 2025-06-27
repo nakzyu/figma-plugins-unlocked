@@ -6,7 +6,6 @@ import {
   FormControl,
   RadioGroup,
   RadioGroupItem,
-  FormMessage,
 } from "@repo/ui";
 import React from "react";
 import { BenderFormType } from "@/common";
@@ -41,7 +40,6 @@ export const CurveTypeInput = () => {
               </FormItem>
             </RadioGroup>
           </FormControl>
-          <FormMessage />
         </FormItem>
       )}
     />

@@ -1,4 +1,5 @@
 import { TO_CODE_CREATE_TEXT_NODE } from "@/common";
+import { centerNodeOnScreen } from "@repo/figma";
 
 export const createTextNode = async (message: TO_CODE_CREATE_TEXT_NODE) => {
   const { payload } = message;
@@ -17,9 +18,10 @@ export const createTextNode = async (message: TO_CODE_CREATE_TEXT_NODE) => {
     textNode.x = data.x;
     textNode.y = data.y;
     textNode.rotation = -data.rotation;
-
     return textNode;
   });
 
-  figma.group(textNodes, figma.currentPage);
+  const group = figma.group(textNodes, figma.currentPage);
+
+  centerNodeOnScreen(group);
 };

@@ -1,5 +1,5 @@
 import { BenderFormType } from "@/common/constants";
-import { FontInfo, TO_UI_SEND_TEXT_NODE } from "../types";
+import { TO_UI_SEND_TEXT_NODE } from "../types";
 
 /**
  * Type for an object containing layout information for each character.
